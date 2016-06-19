@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.lejm1.donacionsangre.CrearCampana"
+    tools:showIn="@layout/activity_crear_campana">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView3" >
+
+        <LinearLayout
+
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Llena los campos requeridos para crear tu campaña de donación"
+                android:id="@+id/textView5"
+                android:layout_margin="15dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/txtCrearCNombreCamp"
+                android:hint="Nombre de la campaña"
+                style="@style/estiloTextEdit" />
+
+            <EditText
+                style="@style/estiloTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/txtFechaCampCreacion"
+                android:hint="Fecha de creacion de la campaña" />
+
+            <EditText
+                style="@style/estiloTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/editText"
+                android:hint="Donantes requeridos" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/txtCrearCampDescripcion"
+                style="@style/estiloTextEditMulti"
+                android:hint="Descripcion de la campaña" />
+
+            <Spinner
+                style="@style/estiloTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerCrearCampTipoSangre" />
+
+            <EditText
+                style="@style/estiloTextEditMulti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/txtCrearCampDatosHospital"
+                android:hint="Nombre y direccion del hospital donde donar" />
+
+            <Button
+                style="@style/btnInicioSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Crear campaña"
+                android:id="@+id/btnCrearCamp"
+                android:layout_gravity="right"
+                android:singleLine="false"
+                android:layout_marginTop="15dp"
+                android:onClick="registrarUsuario" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

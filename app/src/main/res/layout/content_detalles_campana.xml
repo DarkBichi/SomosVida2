@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.lejm1.donacionsangre.DetallesCampana"
+    tools:showIn="@layout/activity_detalles_campana">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView4" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Detalles de la campaña"
+                android:id="@+id/textView7"
+                android:layout_margin="15dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Nombre de la campaña"
+                android:id="@+id/textView13"
+                android:layout_margin="10dp" />
+
+            <EditText
+                style="@style/estiloTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/datosCampania"
+                android:hint="Nombre de la campaña" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Fecha de creacion"
+                android:id="@+id/textView14"
+                android:layout_margin="10dp" />
+
+            <EditText
+                style="@style/estiloTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/fecha_CreacionCampania"
+                android:hint="Fecha de creacion de la campaña" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Descripcion"
+                android:id="@+id/textView15"
+                android:layout_margin="10dp" />
+
+            <EditText
+                style="@style/estiloTextEditMulti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/descripcionCampania"
+                android:hint="Descripcion de la campaña" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Tipo de sangre solicitado"
+                android:id="@+id/textView16"
+                android:layout_margin="10dp" />
+
+            <EditText
+                style="@style/estiloTextEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/tipoSangreSolicitado"
+                android:hint="Fecha de creacion de la campaña" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Donde acudir a donar"
+                android:id="@+id/textView17"
+                android:layout_margin="10dp" />
+
+            <EditText
+                style="@style/estiloTextEditMulti"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/dondeAcudirDonar"
+                android:hint="Nombre y direccion del hospital donde donar" />
+
+            <Button
+                style="@style/btnInicioSesion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Donar a esta campaña"
+                android:id="@+id/btnDonarSangre"
+                android:layout_gravity="right"
+                android:singleLine="false"
+                android:layout_marginTop="15dp"
+                android:onClick="registrarUsuario" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

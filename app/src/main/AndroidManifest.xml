@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.lejm1.donacionsangre">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Bienvenida"
+            android:label="@string/title_activity_bienvenida"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Inicio_Sesion"
+            android:label="@string/title_activity_inicio__sesion"
+            android:parentActivityName=".Bienvenida"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lejm1.donacionsangre.Bienvenida" />
+        </activity>
+        <activity
+            android:name=".Registro_usuarios"
+            android:label="@string/title_activity_registro_usuarios"
+            android:parentActivityName=".Bienvenida"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lejm1.donacionsangre.Bienvenida" />
+        </activity>
+        <activity
+            android:name=".MenuPrincipal"
+            android:label="@string/title_activity_menu_principal"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".CrearCampana"
+            android:label="@string/title_activity_crear_campana"
+            android:parentActivityName=".MenuPrincipal"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.lejm1.donacionsangre.MenuPrincipal" />
+        </activity>
+        <activity
+            android:name=".DetallesCampana"
+            android:label="@string/title_activity_detalles_campana"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VerListacampanias"
+            android:label="@string/title_activity_ver_listacampanias"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".PerfilUsuario"
+            android:label="@string/title_activity_perfil_usuario"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

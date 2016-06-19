@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.lejm1.donacionsangre.MenuPrincipal"
+    tools:showIn="@layout/activity_menu_principal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2" >
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="2"
+            android:rowCount="7">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:text="Bienvenido"
+                android:id="@+id/txtMainBienvenido"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_gravity="center_horizontal" />
+
+
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:id="@+id/btnMainCrearCampana"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:src="@mipmap/eliminarpaciente"
+                android:scaleType="fitCenter"
+                android:background="#00ffffff"
+                style="@style/estiloBotonesMenuPpal"
+                android:onClick="irCrearCampana" />
+
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:id="@+id/mainBtnVerCampanias"
+                android:src="@mipmap/eliminarpaciente"
+                style="@style/estiloBotonesMenuPpal"
+                android:onClick="listaCampanias"
+                android:layout_column="1"
+                android:layout_row="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:text="Crear campaña"
+                android:id="@+id/textView8"
+                android:layout_gravity="center_horizontal"
+                android:layout_column="0"
+                android:layout_row="2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:text="Ver campañas"
+                android:id="@+id/textView9"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:layout_gravity="center_horizontal" />
+
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:id="@+id/mainBtnPerfil"
+                android:src="@mipmap/eliminarpaciente"
+                style="@style/estiloBotonesMenuPpal"
+                android:layout_column="0"
+                android:layout_row="3"
+                android:onClick="abrirPerfil" />
+
+            <ImageButton
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:id="@+id/mainBtnDonar"
+                android:layout_row="3"
+                android:layout_column="1"
+                style="@style/estiloBotonesMenuPpal"
+                android:src="@mipmap/eliminarpaciente"
+                android:onClick="abrirDonaciones" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:text="Ver mi perfil"
+                android:id="@+id/textView10"
+                android:layout_gravity="center_horizontal"
+                android:layout_column="0"
+                android:layout_row="4" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:text="Donar a la aplicacion"
+                android:id="@+id/textView11"
+                android:layout_gravity="center_horizontal"
+                android:layout_column="1"
+                android:layout_row="4" />
+
+        </GridLayout>
+    </ScrollView>
+
+</LinearLayout>
