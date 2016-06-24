@@ -29,11 +29,11 @@
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:ems="10"
         android:id="@+id/txtLoginUsuario"
         style="@style/estiloTextEdit"
-        android:hint="Usuario" />
+        android:hint="Email" />
 
     <EditText
         style="@style/estiloTextEdit"

@@ -14,9 +14,13 @@ import android.widget.ProgressBar;
 import android.os.AsyncTask;
 import android.content.Context;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class MainActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
+    FirebaseAuth auth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,13 +31,14 @@ public class MainActivity extends AppCompatActivity {
         progressBar.setMax(100);
         progressBar.setBackgroundColor(Color.TRANSPARENT);
         progressBar.setProgress(0);
+        auth = FirebaseAuth.getInstance();
 
         AsyncTaskCargaDatos ATCargaDatos = new AsyncTaskCargaDatos(this);
         ATCargaDatos.execute();
 
     }
 
-    public class AsyncTaskCargaDatos extends AsyncTask<Void, Integer, Void> {
+    public class AsyncTaskCargaDatos extends AsyncTask<String, Integer, Boolean> {
 
         Context mContext;
 
@@ -42,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected Void doInBackground(Void... params) {
+        protected Boolean doInBackground(String... params) {
 
             publishProgress(0);
 
@@ -54,7 +59,13 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
             }
-            return null;
+
+            FirebaseUser user = auth.getCurrentUser();
+            if(user!=null){
+                return true;
+            }else{
+                return false;
+            }
         }
 
         @Override
@@ -63,9 +74,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Void result) {
-            mContext.startActivity(new Intent(mContext, Bienvenida.class));
-            finish();
+        protected void onPostExecute(Boolean result) {
+            if(result){
+                mContext.startActivity(new Intent(mContext,MenuPrincipal.class));
+                finish();
+            }else{
+                mContext.startActivity(new Intent(mContext, Bienvenida.class));
+                finish();
+            }
+
         }
     }// fin asynctask
 }

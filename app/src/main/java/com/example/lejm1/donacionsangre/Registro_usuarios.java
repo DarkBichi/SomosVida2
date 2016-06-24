@@ -87,7 +87,6 @@ public class Registro_usuarios extends AppCompatActivity {
         final SimpleDateFormat dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         fecha.setInputType(InputType.TYPE_NULL);
         fecha.requestFocus();
-        Toast.makeText(contexto,"Nuevo",Toast.LENGTH_SHORT).show();
 
         fecha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -242,23 +241,22 @@ public class Registro_usuarios extends AppCompatActivity {
         auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if(!task.isSuccessful()){
+                if(task.isSuccessful()){
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    if(user!=null){
+                        id=user.getUid();
+                        DatabaseReference usuario = myRef.child(id);
+                        registrar(usuario);
+                    }
+
+
+                }else{
                     String error = task.getException().toString();
                     Toast.makeText(contexto,error,Toast.LENGTH_LONG).show();
                 }
             }
         });
-        FirebaseAuth.AuthStateListener authListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user != null){
-                    id=user.getUid();
-                    DatabaseReference usuario = myRef.child(id);
-                    registrar(usuario);
-                }
-            }
-        };
+
 
 
 
@@ -271,6 +269,7 @@ public class Registro_usuarios extends AppCompatActivity {
         usuario.child("ap_materno").setValue(ap_materno);
         usuario.child("email").setValue(email);
         usuario.child("password").setValue(password);
+        usuario.child("user").setValue(userid);
         usuario.child("tipoSangre").setValue(tipoSangre);
         usuario.child("sexo").setValue(sexo);
         usuario.child("fecha_nac").setValue(fecha_nac);

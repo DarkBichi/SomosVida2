@@ -73,7 +73,7 @@
                 style="@style/estiloTextEdit"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:ems="10"
                 android:id="@+id/txtRegistroCorreo"
                 android:hint="Correo electronico" />
