@@ -1,11 +1,13 @@
 package com.example.lejm1.donacionsangre;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -54,6 +56,9 @@ public class PerfilUsuario extends AppCompatActivity {
         estado = (TextView) findViewById(R.id.etdatosEstado);
         pais = (TextView) findViewById(R.id.etdatosPais);
         email = (TextView) findViewById(R.id.etdatosEmail);
+        Button cerrarSesion = (Button) findViewById(R.id.btncerrarSesion);
+
+
 
         FirebaseUser user = auth.getCurrentUser();
         DatabaseReference usuario = myRef.child(user.getUid());
@@ -75,6 +80,15 @@ public class PerfilUsuario extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+
+        cerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                auth.signOut();
+                Intent i = new Intent(PerfilUsuario.this,MainActivity.class);
+                startActivity(i);
             }
         });
 

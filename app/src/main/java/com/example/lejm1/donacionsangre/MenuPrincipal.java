@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MenuPrincipal extends AppCompatActivity {
 
     FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,13 +22,15 @@ public class MenuPrincipal extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         auth=FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
-        if(user!=null){
-            System.out.println(user.getUid());
-        }else{
-            System.out.println("No hay nadie iniciado MENTIROSO");
-        }
+        user = auth.getCurrentUser();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(user!=null){
+            System.exit(0);
+        }
     }
 
     public void irCrearCampana(View v){

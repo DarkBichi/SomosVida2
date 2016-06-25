@@ -268,7 +268,6 @@ public class Registro_usuarios extends AppCompatActivity {
         usuario.child("ap_paterno").setValue(ap_paterno);
         usuario.child("ap_materno").setValue(ap_materno);
         usuario.child("email").setValue(email);
-        usuario.child("password").setValue(password);
         usuario.child("user").setValue(userid);
         usuario.child("tipoSangre").setValue(tipoSangre);
         usuario.child("sexo").setValue(sexo);

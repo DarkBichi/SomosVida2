@@ -39,6 +39,11 @@ public class Bienvenida extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        System.exit(0);
+    }
+
     public void opcIniciarSesion(View v) {
         Intent i;
         i = new Intent(this, Inicio_Sesion.class);

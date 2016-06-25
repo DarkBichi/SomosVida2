@@ -1,13 +1,16 @@
 package com.example.lejm1.donacionsangre;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -16,8 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -33,6 +38,7 @@ public class Inicio_Sesion extends AppCompatActivity {
     DatabaseReference myRef;
     FirebaseAuth auth;
     Context contexto;
+    String correo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,56 @@ public class Inicio_Sesion extends AppCompatActivity {
         txtemail = (EditText)findViewById(R.id.txtLoginUsuario);
         txtpassword = (EditText)findViewById(R.id.txtLoginPassword);
         contexto=this;
+
+        Button recuperaPassword = (Button) findViewById(R.id.btnRecuperaPassword);
+        recuperaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LayoutInflater li = LayoutInflater.from(contexto);
+                View vista = li.inflate(R.layout.recibe_correo, null);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(contexto);
+                alertDialogBuilder.setView(vista);
+                final EditText correoR = (EditText) vista.findViewById(R.id.correoRecupera);
+                alertDialogBuilder
+                        .setCancelable(false)
+                        .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                correo = correoR.getText().toString();
+                                auth.sendPasswordResetEmail(correo)
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if(task.isSuccessful()){
+                                                    Toast.makeText(Inicio_Sesion.this, "Email de Recuperacion Enviado", Toast.LENGTH_LONG).show();
+                                                }else{
+
+                                                    FirebaseException error = (FirebaseException)task.getException();
+                                                    if(error!=null){
+                                                        try{
+                                                            FirebaseAuthInvalidUserException e = (FirebaseAuthInvalidUserException)error;
+                                                            Toast.makeText(Inicio_Sesion.this, "El correo "+correo+" no se encuentra registrado", Toast.LENGTH_LONG).show();
+                                                        }catch(Exception e){
+                                                            Toast.makeText(Inicio_Sesion.this, "El correo ingresado es invalido", Toast.LENGTH_SHORT).show();
+                                                        }
+
+                                                    }
+                                                }
+                                            }
+                                        });
+                            }
+                        })
+                        .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
+
+            }
+        });
 
 
     }
