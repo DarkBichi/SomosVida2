@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lejm1.donacionsangre.Datos.dtsUsuario;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,6 +46,7 @@ public class PerfilUsuario extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         db = FirebaseDatabase.getInstance();
+        db.setPersistenceEnabled(true);
         myRef=db.getReference("Usuarios");
         auth = FirebaseAuth.getInstance();
 
@@ -82,6 +84,8 @@ public class PerfilUsuario extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
+                pd.dismiss();
+                Toast.makeText(PerfilUsuario.this, databaseError.toString(), Toast.LENGTH_SHORT).show();
 
             }
         });

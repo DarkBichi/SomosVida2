@@ -62,7 +62,6 @@ public class CrearCampana extends AppCompatActivity {
     void obtenerDatos(){
         nombreCampaña = txtnombreCampaña.getText().toString();
         nombrePaciente = txtnombrePaciente.getText().toString();
-        fechaCampaña=txtfechaCampaña.getText().toString();
         noDonantes=txtnoDonantes.getText().toString();
         descripcionCampaña=txtdescripcionCampaña.getText().toString();
         tipoSangre = spinner.getSelectedItem().toString();
@@ -93,6 +92,7 @@ public class CrearCampana extends AppCompatActivity {
         txtnombreHospital = (EditText) findViewById(R.id.txtCrearCNombreHospital);
         txtdireccionHospital = (EditText) findViewById(R.id.txtCrearCampDatosHospital);
         txtfechaCampaña.setInputType(InputType.TYPE_NULL);
+        txtfechaCampaña.requestFocus();
         txtfechaCampaña.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +104,7 @@ public class CrearCampana extends AppCompatActivity {
                         newDate.set(year,monthOfYear,dayOfMonth);
                         String[] meses = getResources().getStringArray(R.array.meses);
                         String fecha = String.valueOf(dayOfMonth).concat(" de ").concat(meses[monthOfYear]).concat(" de ").concat(String.valueOf(year));
-                        txtfechaCampaña.setText(dateFormatter.format(newDate.getTime()));
+                        fechaCampaña =dateFormatter.format(newDate.getTime());
                         txtfechaCampaña.setText(fecha);
                     }
                 },newCalendar.get(Calendar.YEAR),newCalendar.get(Calendar.MONTH),newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -139,7 +139,7 @@ public class CrearCampana extends AppCompatActivity {
                     pd.dismiss();
                     return;
                 }
-                if(txtfechaCampaña.getText().toString().equals("")){
+                if(fechaCampaña.equals("")){
                     Toast.makeText(CrearCampana.this, "Debes ingresar una fecha limite para la campaña", Toast.LENGTH_LONG).show();
                     pd.dismiss();
                     return;
@@ -167,7 +167,6 @@ public class CrearCampana extends AppCompatActivity {
 
                 obtenerDatos();
                 registraCampaña();
-
             }
         });
     }
