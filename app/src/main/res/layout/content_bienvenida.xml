@@ -28,10 +28,10 @@
         android:layout_gravity="center_horizontal">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:id="@+id/imageView"
-            android:src="@mipmap/eliminarpaciente" />
+            android:src="@mipmap/icono_paciente" />
     </RelativeLayout>
 
     <TextView

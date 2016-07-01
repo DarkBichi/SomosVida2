@@ -46,7 +46,7 @@ public class PerfilUsuario extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         db = FirebaseDatabase.getInstance();
-        db.setPersistenceEnabled(true);
+        //db.setPersistenceEnabled(true);
         myRef=db.getReference("Usuarios");
         auth = FirebaseAuth.getInstance();
 
