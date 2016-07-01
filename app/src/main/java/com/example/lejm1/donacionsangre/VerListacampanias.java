@@ -7,12 +7,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class VerListacampanias extends AppCompatActivity {
+
+    FirebaseDatabase db;
+    DatabaseReference myRef;
 
 
     ListView vistaLista;
@@ -24,6 +37,8 @@ public class VerListacampanias extends AppCompatActivity {
         setContentView(R.layout.activity_ver_listacampanias);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        db=FirebaseDatabase.getInstance();
+        myRef=db.getReference("Campañas");
 
         vistaLista = (ListView) findViewById(R.id.listCampanias);
 
@@ -46,6 +61,10 @@ public class VerListacampanias extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner2.setAdapter(adapter2);
+
+        Button verTodas = (Button)findViewById(R.id.btnviewall);
+
+
 
 
 
