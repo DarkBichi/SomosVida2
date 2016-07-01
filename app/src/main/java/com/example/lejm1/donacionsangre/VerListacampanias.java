@@ -7,9 +7,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
+
 public class VerListacampanias extends AppCompatActivity {
+
+
+    ListView vistaLista;
+    SimpleAdapter adaptadorSimple;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +24,8 @@ public class VerListacampanias extends AppCompatActivity {
         setContentView(R.layout.activity_ver_listacampanias);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        vistaLista = (ListView) findViewById(R.id.listCampanias);
 
         //Spinner para los estados
         Spinner spinner = (Spinner) findViewById(R.id.spinnerPaisesLista);
@@ -37,6 +46,8 @@ public class VerListacampanias extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner2.setAdapter(adapter2);
+
+
 
     }
 
