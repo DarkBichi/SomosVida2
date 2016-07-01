@@ -44,6 +44,15 @@
                 style="@style/estiloTextEdit" />
 
             <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/txtCrearCNombrePaciente"
+                android:hint="Nombre del Paciente"
+                style="@style/estiloTextEdit" />
+
+            <EditText
                 style="@style/estiloTextEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -58,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText"
+                android:id="@+id/txtCrearCNumeroDonantes"
                 android:hint="Donantes requeridos" />
 
             <EditText
@@ -77,13 +86,22 @@
                 android:id="@+id/spinnerCrearCampTipoSangre" />
 
             <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/txtCrearCNombreHospital"
+                android:hint="Nombre del hospital donde donar"
+                style="@style/estiloTextEdit" />
+
+            <EditText
                 style="@style/estiloTextEditMulti"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textMultiLine"
                 android:ems="10"
                 android:id="@+id/txtCrearCampDatosHospital"
-                android:hint="Nombre y direccion del hospital donde donar" />
+                android:hint="Direccion del hospital donde donar" />
 
             <Button
                 style="@style/btnInicioSesion"

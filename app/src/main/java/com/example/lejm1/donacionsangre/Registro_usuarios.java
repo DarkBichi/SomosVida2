@@ -1,6 +1,7 @@
 package com.example.lejm1.donacionsangre;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -43,6 +44,7 @@ public class Registro_usuarios extends AppCompatActivity {
 
     private RadioGroup radioGroup;
     ConnectionClass connectionClass;
+    ProgressDialog pd;
 
     EditText ape_paterno, ape_materno, nombre, fecha, mail, usuario, passwordd, ciudadOrigen;
     String tipoSexo = "";
@@ -195,6 +197,8 @@ public class Registro_usuarios extends AppCompatActivity {
     }
 
     public void registrarUsuario(View v) {
+
+        pd = ProgressDialog.show(this,"Registrando Usuarios","Espere unos segundos");
         //Registro registro = new Registro();
         //registro.execute("");
         //Intent i = new Intent(this, Bienvenida.class);
@@ -203,38 +207,47 @@ public class Registro_usuarios extends AppCompatActivity {
 
 
         if (ap_paterno.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar su Apellido Paterno", Toast.LENGTH_LONG).show();
             return;
         }
         if (ap_materno.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar su Apellido Materno", Toast.LENGTH_LONG).show();
             return;
         }
         if (nombres.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar su Nombre", Toast.LENGTH_LONG).show();
             return;
         }
         if (fecha_nac.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar su Fecha de nacimiento", Toast.LENGTH_LONG).show();
             return;
         }
         if (email.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar su Email", Toast.LENGTH_LONG).show();
             return;
         }
         if (userid.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar un Usuario", Toast.LENGTH_LONG).show();
             return;
         }
         if (password.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar una contraseña", Toast.LENGTH_LONG).show();
             return;
         }
         if (ciudad.equals("")) {
+            pd.dismiss();
             Toast.makeText(this, "Debe ingresar una ciudad", Toast.LENGTH_LONG).show();
             return;
         }
         if(sexo.equals("")){
+            pd.dismiss();
             Toast.makeText(this,"Debe seleccionar un sexo",Toast.LENGTH_LONG).show();
             return;
         }
@@ -251,6 +264,7 @@ public class Registro_usuarios extends AppCompatActivity {
 
 
                 }else{
+                    pd.dismiss();
                     String error = task.getException().toString();
                     Toast.makeText(contexto,error,Toast.LENGTH_LONG).show();
                 }
@@ -275,7 +289,7 @@ public class Registro_usuarios extends AppCompatActivity {
         usuario.child("pais").setValue(pais);
         usuario.child("estado").setValue(estado);
         usuario.child("ciudad").setValue(ciudad);
-
+        pd.dismiss();
         Toast.makeText(this, "Usuario Registradoo", Toast.LENGTH_LONG).show();
         Intent i = new Intent(this, Bienvenida.class);
         startActivity(i);

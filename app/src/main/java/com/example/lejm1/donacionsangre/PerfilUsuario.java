@@ -1,5 +1,6 @@
 package com.example.lejm1.donacionsangre;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -62,6 +63,7 @@ public class PerfilUsuario extends AppCompatActivity {
 
         FirebaseUser user = auth.getCurrentUser();
         DatabaseReference usuario = myRef.child(user.getUid());
+        final ProgressDialog pd=ProgressDialog.show(this,"Cargando Datos","Espere unos segundos");
         usuario.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -75,6 +77,7 @@ public class PerfilUsuario extends AppCompatActivity {
                 estado.setText(u.getEstado());
                 pais.setText(u.getPais());
                 email.setText(u.getEmail());
+                pd.dismiss();
             }
 
             @Override
